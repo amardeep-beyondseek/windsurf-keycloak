@@ -7,26 +7,26 @@ services:
     port: 8080
     plan: starter
     envVars:
-      - key: KEYCLOAK_ADMIN
-        sync: false
+      - key: KEYCLOAK_ADMIN_USER
+        value: admin
       - key: KEYCLOAK_ADMIN_PASSWORD
         sync: false
-      - key: KC_DB
-        value: postgres
-      - key: KC_DB_URL
-        value: jdbc:postgresql://dpg-d0hv6bemcj7s739hscc0-a:5432/keycloak_l3wn
-      - key: KC_DB_USERNAME
+      - key: KEYCLOAK_DATABASE_HOST
+        value: dpg-d0hv6bemcj7s739hscc0-a
+      - key: KEYCLOAK_DATABASE_PORT
+        value: "5432"
+      - key: KEYCLOAK_DATABASE_NAME
+        value: keycloak_l3wn
+      - key: KEYCLOAK_DATABASE_USER
         value: keycloak_l3wn_user
-      - key: KC_DB_PASSWORD
+      - key: KEYCLOAK_DATABASE_PASSWORD
         value: exBGAs0x5CDliJCt6vbmDZApVkcVLV0m
-      - key: KC_PROXY
+      - key: KEYCLOAK_PROXY
         value: edge
-      - key: KC_HTTP_ENABLED
-        value: "true"
-      - key: KC_HOSTNAME_STRICT
+      - key: KEYCLOAK_PRODUCTION
         value: "false"
-      - key: KC_HOSTNAME
-        sync: false
+      - key: KEYCLOAK_HTTP_RELATIVE_PATH
+        value: "/"
     disk:
       name: keycloak-data
       mountPath: /opt/keycloak/data
