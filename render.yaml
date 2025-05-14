@@ -3,7 +3,7 @@ services:
     name: windsurf-keycloak
     env: docker
     dockerfilePath: ./Dockerfile
-    healthCheckPath: /auth/realms/master
+    healthCheckPath: /health/ready
     port: 8080
     plan: starter
     envVars:
@@ -11,20 +11,20 @@ services:
         sync: false
       - key: KEYCLOAK_ADMIN_PASSWORD
         sync: false
-      - key: DB_VENDOR
+      - key: KC_DB
         value: postgres
-      - key: DB_ADDR
-        value: dpg-d0hv6bemcj7s739hscc0-a
-      - key: DB_PORT
-        value: "5432"
-      - key: DB_DATABASE
-        value: keycloak_l3wn
-      - key: DB_USER
+      - key: KC_DB_URL
+        value: jdbc:postgresql://dpg-d0hv6bemcj7s739hscc0-a:5432/keycloak_l3wn
+      - key: KC_DB_USERNAME
         value: keycloak_l3wn_user
-      - key: DB_PASSWORD
+      - key: KC_DB_PASSWORD
         value: exBGAs0x5CDliJCt6vbmDZApVkcVLV0m
-      - key: PROXY_ADDRESS_FORWARDING
+      - key: KC_PROXY
+        value: edge
+      - key: KC_HTTP_ENABLED
         value: "true"
+      - key: KC_HOSTNAME_STRICT
+        value: "false"
       - key: KC_HOSTNAME
         sync: false
     disk:
