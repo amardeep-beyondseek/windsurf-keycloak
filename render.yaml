@@ -4,6 +4,7 @@ services:
     env: docker
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health
+    port: 10000
     plan: starter
     envVars:
       - key: KEYCLOAK_ADMIN

@@ -13,6 +13,10 @@ ENV KC_DB_PASSWORD=exBGAs0x5CDliJCt6vbmDZApVkcVLV0m
 # Configure proxy and HTTP
 ENV KC_PROXY=edge
 ENV KC_HTTP_ENABLED=true
+ENV KC_HTTP_PORT=10000
+ENV KC_HOSTNAME_STRICT=false
+ENV KC_HOSTNAME_STRICT_HTTPS=false
 
 # Start Keycloak in development mode for easier setup
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
+EXPOSE 10000
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=10000", "--http-relative-path=/", "--hostname-strict=false"]
