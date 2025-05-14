@@ -11,7 +11,7 @@ services:
       - key: KEYCLOAK_ADMIN_PASSWORD
         sync: false
       - key: KC_DB_URL
-        value: postgres://keycloak_l3wn_user:exBGAs0x5CDliJCt6vbmDZApVkcVLV0m@dpg-d0hv6bemcj7s739hscc0-a:5432/keycloak_l3wn
+        value: jdbc:postgresql://dpg-d0hv6bemcj7s739hscc0-a:5432/keycloak_l3wn
       - key: KC_DB_USERNAME
         value: keycloak_l3wn_user
       - key: KC_DB_PASSWORD
