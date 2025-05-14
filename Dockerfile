@@ -1,26 +1,22 @@
-FROM bitnami/keycloak:latest
+FROM jboss/keycloak:16.1.1
+
+# Set admin credentials
+ENV KEYCLOAK_USER=admin
+ENV KEYCLOAK_PASSWORD=admin123
 
 # Configure database
-ENV KEYCLOAK_DATABASE_HOST=dpg-d0hv6bemcj7s739hscc0-a
-ENV KEYCLOAK_DATABASE_PORT=5432
-ENV KEYCLOAK_DATABASE_NAME=keycloak_l3wn
-ENV KEYCLOAK_DATABASE_USER=keycloak_l3wn_user
-ENV KEYCLOAK_DATABASE_PASSWORD=exBGAs0x5CDliJCt6vbmDZApVkcVLV0m
+ENV DB_VENDOR=postgres
+ENV DB_ADDR=dpg-d0hv6bemcj7s739hscc0-a
+ENV DB_PORT=5432
+ENV DB_DATABASE=keycloak_l3wn
+ENV DB_USER=keycloak_l3wn_user
+ENV DB_PASSWORD=exBGAs0x5CDliJCt6vbmDZApVkcVLV0m
 
-# Configure Keycloak
-ENV KEYCLOAK_HTTP_PORT=10000
-ENV KEYCLOAK_HTTPS_PORT=8443
-ENV KEYCLOAK_PROXY=edge
-ENV KEYCLOAK_PRODUCTION=false
-ENV KEYCLOAK_HTTP_RELATIVE_PATH=/
-ENV KEYCLOAK_EXTRA_ARGS="--http-port=10000"
+# Configure proxy
+ENV PROXY_ADDRESS_FORWARDING=true
 
 # Expose port
-EXPOSE 10000
+EXPOSE 8080 8443
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=15s --start-period=60s \
-  CMD curl -f http://localhost:10000/health/ready || exit 1
-
-# Start Keycloak
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
+# Use custom port for Render
+CMD ["-b", "0.0.0.0"]
