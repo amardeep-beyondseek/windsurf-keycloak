@@ -4,13 +4,13 @@ services:
     env: docker
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health/ready
-    port: 8080
+    port: 10000
     plan: starter
     envVars:
       - key: KEYCLOAK_ADMIN_USER
         value: admin
       - key: KEYCLOAK_ADMIN_PASSWORD
-        sync: false
+        value: admin123
       - key: KEYCLOAK_DATABASE_HOST
         value: dpg-d0hv6bemcj7s739hscc0-a
       - key: KEYCLOAK_DATABASE_PORT
@@ -21,6 +21,8 @@ services:
         value: keycloak_l3wn_user
       - key: KEYCLOAK_DATABASE_PASSWORD
         value: exBGAs0x5CDliJCt6vbmDZApVkcVLV0m
+      - key: KEYCLOAK_HTTP_PORT
+        value: "10000"
       - key: KEYCLOAK_PROXY
         value: edge
       - key: KEYCLOAK_PRODUCTION
@@ -29,5 +31,5 @@ services:
         value: "/"
     disk:
       name: keycloak-data
-      mountPath: /opt/keycloak/data
+      mountPath: /opt/bitnami/keycloak/data
       sizeGB: 1
