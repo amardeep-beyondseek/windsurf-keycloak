@@ -4,17 +4,22 @@ services:
     env: docker
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health
+    plan: starter
     envVars:
       - key: KEYCLOAK_ADMIN
         sync: false
       - key: KEYCLOAK_ADMIN_PASSWORD
         sync: false
       - key: KC_DB_URL
-        sync: false
+        value: postgres://keycloak_l3wn_user:exBGAs0x5CDliJCt6vbmDZApVkcVLV0m@dpg-d0hv6bemcj7s739hscc0-a:5432/keycloak_l3wn
       - key: KC_DB_USERNAME
-        sync: false
+        value: keycloak_l3wn_user
       - key: KC_DB_PASSWORD
-        sync: false
+        value: exBGAs0x5CDliJCt6vbmDZApVkcVLV0m
+      - key: KC_PROXY
+        value: edge
+      - key: KC_HTTP_ENABLED
+        value: "true"
       - key: KC_HOSTNAME
         sync: false
     disk:
